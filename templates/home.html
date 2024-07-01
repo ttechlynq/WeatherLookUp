@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<div class="home">
+  <div class="jumbotron">
+    <h1 class="display-4">Weather APP</h1>
+    <p class="lead">
+      This is a simple hero unit, a simple jumbotron-style component for calling
+      extra attention to featured content or information.
+
+      <!-- <center class="row"> -->
+        <h1>Weather App</h1>
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Get Weather</button>
+        </form>
+      
+
+
+      {% if info %}
+      <h2>Weather Information</h2>
+      {% if info.error %}
+      <p>{{ info.error }}</p>
+      {% else %}
+      <p>Country Code: {{ info.country_code }}</p>
+      <p>Coordinate: {{ info.coordinate }}</p>
+      <p>Temperature: {{ info.temp }}</p>
+      <p>Pressure: {{ info.pressure }}</p>
+      <p>Humidity: {{ info.humidity }}</p>
+      {% endif %} {% endif %}
+      <p>
+        <img src="{{ info.icon_url }}" alt="Weather Icon">
+    </p>
+    <!-- </center> -->
+    </p>
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}
